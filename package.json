@@ -1,0 +1,16 @@
+{
+  "name" : "route-plugin",
+  "version" : "1.0.0",
+  "description" : "原神锄大地路线查询",
+  "main" : "index.js",
+  "private" : true,
+  "scripts" : {
+    "test" : "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords" : [],
+  "author" : "Bennett",
+  "license" : "MIT",
+  "dependencies" : {
+    "chokidar" : "^3.5.3"
+  }
+}
