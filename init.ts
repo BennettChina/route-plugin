@@ -6,13 +6,20 @@ import { Logger } from "log4js";
 import { getFileSize } from "@/utils/network";
 import Progress from "@/utils/progress";
 import { formatMemories } from "@/utils/format";
+import { Renderer } from "@/modules/renderer";
+import routers from "./routes";
 
 export let metaManagement: MetaManagement;
 export let routeClass: RouteClass;
+export let renderer: Renderer;
 
 export default definePlugin( {
 	name: "路线查询",
 	cfgList,
+	server: {
+		routers
+	},
+	publicDirs: [ "assets", "views" ],
 	assets: {
 		manifestUrl: "https://source.hibennett.cn/bot/genshin/route/manifest.yml",
 		downloadBaseUrl: "https://source.hibennett.cn",
@@ -91,6 +98,8 @@ export default definePlugin( {
 		metaManagement = new MetaManagement( params.file, params.logger );
 		metaManagement.watchStart();
 		routeClass = new RouteClass();
+		/* 实例化渲染器 */
+		renderer = params.renderRegister( "#app", "views" );
 	},
 	async unmounted() {
 		metaManagement.clear();

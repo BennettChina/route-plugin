@@ -12,12 +12,12 @@ export type Route = Array<{
 
 export class RouteClass {
 	
-	private get route() {
+	public get routes() {
 		return metaManagement.getMeta( "meta/route" );
 	}
 	
 	public async get( input: string ) {
-		const route = this.route.find( value => value.name === input || ( value.alias && value.alias.includes( input ) ) );
+		const route = this.routes.find( value => value.name === input || ( value.alias && value.alias.includes( input ) ) );
 		if ( !route ) {
 			return [];
 		}
